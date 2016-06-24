@@ -11,24 +11,27 @@
 \usepackage{multicol}
 \mode<presentation>{\usetheme{tud}}
 
-\title[Beamer Sample]{Sample presentation using Beamer}
+\title[BEPStore]{BEPStore - Final Presentation}
 %\subtitle
 \institute[TU Delft]{Delft University of Technology}
-\author{Maarten Abbink}
+\author{Bart Heemskerk, Wouter Kooyman van Guldener \& Steffan Sluis}
 \date{\today}
 
 % Insert frame before each subsection (requires 2 latex runs)
-\AtBeginSubsection[] {
-	\begin{frame}<beamer>\frametitle{\titleSubsec}
+\AtBeginSection[] {\begin{frame}<beamer>\frametitle{\titleSubsec}
 	    \begin{multicols}{2}
 		\tableofcontents[currentsection,currentsubsection]  % Generation of the Table of Contents
 		\end{multicols}
 	\end{frame}
 }
 % Define the title of each inserted pre-subsection frame
-\newcommand*\titleSubsec{Next Subsection}
+\newcommand*\titleSubsec{Up next}
+% Define the title of the "Authors" frame
+\newcommand*\titleAuthors{About us}
 % Define the title of the "Table of Contents" frame
 \newcommand*\titleTOC{Outline}
+% Define the title of the "End" frame
+\newcommand*\titleEnd{Happy BEP'ing\!}
 
 % define a symbol which can be removed if you don't need it
 \newcommand{\field}[1]{\mathbb{#1}}
@@ -38,9 +41,17 @@
 
 {
 % remove the next line if you don't want a background image
-\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{images/background-titlepage.jpg}}%
+\usebackgroundtemplate{
+\includegraphics[height=\paperwidth,angle=90,keepaspectratio,trim=-0 0 7.5cm 0]{media/background}}%
 \setbeamertemplate{footline}{\usebeamertemplate*{minimal footline}}
 \frame{\titlepage}
+}
+
+
+{\setbeamertemplate{footline}{\usebeamertemplate*{minimal footline}}
+\begin{frame}\frametitle{\titleAuthors}
+    \input{./team}
+\end{frame}
 }
 
 
@@ -56,6 +67,12 @@
 \include{./research}
 \include{./solution}
 \include{./conclusion}
+
+{\setbeamertemplate{footline}{\usebeamertemplate*{minimal footline}}
+\begin{frame}\frametitle{\titleEnd}
+    \input{./end}
+\end{frame}
+}
 
 % Include line below to see a sample
 % \include{./sample}
